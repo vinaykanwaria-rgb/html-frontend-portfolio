@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vinay Kanwaria | Software Developer</title>
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #3b82f6;
+            --secondary-color: #60a5fa;
+            --dark-color: #000000;
+            --light-color: #e5e7eb;
+            --success-color: #10b981;
+            --text-color: #d1d5db;
+            --white: #ffffff;
+            --card-bg: #111827;
+            --section-bg: #0f172a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--dark-color);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            color: var(--white);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -0.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        /* Header and Navigation */
+        header {
+            background-color: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--light-color);
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger .bar {
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: var(--light-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('https://img.freepik.com/free-photo/programming-background-with-person-working-with-codes-computer_23-2150010138.jpg?size=626&ext=jpg') no-repeat center center/cover;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--light-color);
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--section-bg);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+        }
+
+        .about-text {
+            flex: 3;
+        }
+
+        .about-img {
+            flex: 2;
+            text-align: center;
+        }
+
+        .about-img img {
+            width: 70%;
+            border-radius: 50%;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-text h3 {
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        /* Experience Section */
+        .experience-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .experience-title {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .experience-company {
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .experience-date {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .experience-description ul {
+            list-style-position: inside;
+            margin-left: 1rem;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-img {
+            height: 200px;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-description {
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        /* Skills Section */
+        .skills {
+            background-color: var(--section-bg);
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .skill-category {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 2rem;
+            flex: 1;
+            min-width: 250px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .skill-category h3 {
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill-item {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+        }
+
+        /* Education Section */
+        .education-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .education-title {
+            margin-bottom: 0.5rem;
+        }
+
+        .education-institution {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--section-bg);
+        }
+
+        .contact-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-form {
+            flex: 2;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon {
+            margin-right: 1rem;
+            background-color: var(--primary-color);
+            color: var(--white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-text {
+            font-weight: 500;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #374151;
+            background-color: #1f2937;
+            color: var(--light-color);
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000000;
+            color: var(--light-color);
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+
+            .about-img {
+                margin-bottom: 2rem;
+            }
+
+            .contact-container {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 5rem;
+                left: 0;
+                background-color: rgba(17, 24, 39, 0.95);
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+                transform: translateY(-150%);
+                transition: transform 0.3s ease;
+                z-index: 99;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .about-img img {
+                width: 80%;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header and Navigation -->
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">Vinay Kanwaria</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Teaching Practice</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1 class="hero-title">Vinay Kanwaria</h1>
+                <h2 class="hero-subtitle">As an aspiring educator, I am eager to contribute to a progressive educational
+                    institution where I can inspire young minds, support holistic development, and help students achieve
+                    their fullest potential.</h2>
+                <div>
+                    <a href="#contact" class="btn">Get in Touch</a>
+                    <!-- <a href="#projects" class="btn"
+                        style="margin-left: 10px; background-color: transparent; color: var(--secondary-color); border: 2px solid var(--secondary-color);">View
+                        Work</a> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="./Vinay_Profile_Image.jpeg" alt="Vinay Kanwaria">
+                </div>
+                <div class="about-text">
+                    <h3>Aspiring Educator</h3>
+                    <p>An aspiring educator committed to fostering academic excellence, critical thinking, and holistic
+                        student development through innovative and student-centered teaching practices. I hold a Diploma
+                        in Elementary Education (D.El.Ed.) from CDLU University and have successfully qualified both the
+                        CTET (Central Teacher Eligibility Test) and PTET (Pre-Teacher Education Test) 2026.</p><br>
+                    <p>My teaching journey has been strengthened through practical classroom experience at Arya Vidhya
+                        Mandir Senior Secondary School, where I developed and delivered engaging lesson plans, managed
+                        classroom activities, and supported students in their academic and personal growth. I believe
+                        that every child has unique potential, and my goal is to create a positive, inclusive, and
+                        motivating learning environment that encourages curiosity, confidence, and lifelong learning.
+                    </p><br>
+                    <p>I possess strong skills in classroom management, lesson planning, student engagement,
+                        communication, and educational technology. With a student-centered approach and a commitment to
+                        continuous professional development, I strive to make learning meaningful, enjoyable, and
+                        impactful.</p><br>
+
+                    <div class="social-links">
+                        <!-- <a href="https://www.linkedin.com/in/mohit-kanwaria-759b54242/" target="_blank"
+                            title="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a> -->
+                        <!-- <a href="https://github.com/mohitkanwaria" target="_blank" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a> -->
+                        <a href="mailto:vinaykanwaria@gmail.com" title="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills section">
+        <div class="container">
+            <h2 class="section-title">Key Skills</h2>
+
+            <div class="skills-container">
+
+                <!-- Classroom Management -->
+                <div class="skill-category">
+                    <h3>Classroom Management</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">Maintaining productive learning environments</div>
+                        <div class="skill-item">Student discipline management</div>
+                        <div class="skill-item">Classroom organization</div>
+                    </div>
+                </div>
+
+                <!-- Lesson Planning -->
+                <div class="skill-category">
+                    <h3>Lesson Planning</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">Curriculum-aligned lesson plans</div>
+                        <div class="skill-item">Age-appropriate teaching strategies</div>
+                        <div class="skill-item">Interactive learning activities</div>
+                    </div>
+                </div>
+
+                <!-- Communication Skills -->
+                <div class="skill-category">
+                    <h3>Communication Skills</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">Effective verbal communication</div>
+                        <div class="skill-item">Written communication</div>
+                        <div class="skill-item">Parent-teacher interaction</div>
+                    </div>
+                </div>
+
+                <!-- Student Engagement -->
+                <div class="skill-category">
+                    <h3>Student Engagement</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">Interactive teaching methods</div>
+                        <div class="skill-item">Inclusive classroom practices</div>
+                        <div class="skill-item">Student motivation techniques</div>
+                    </div>
+                </div>
+
+                <!-- Computer Skills -->
+                <div class="skill-category">
+                    <h3>Basic Computer Knowledge</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">MS Office</div>
+                        <div class="skill-item">Digital Classroom Tools</div>
+                        <div class="skill-item">Educational Technology</div>
+                    </div>
+                </div>
+
+                <!-- Time Management -->
+                <div class="skill-category">
+                    <h3>Time Management</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">Task Prioritization</div>
+                        <div class="skill-item">Academic Scheduling</div>
+                        <div class="skill-item">Deadline Management</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience section">
+        <div class="container">
+            <h2 class="section-title">Teaching Practice / Internship</h2>
+
+            <div class="experience-card">
+                <div class="experience-title">
+                    <div class="experience-company">Arya Vidhya Mandir Senior Secondary School</div>
+                    <div class="experience-date">D.El.Ed Teaching Practice</div>
+                </div>
+
+                <div class="experience-description">
+                    <ul>
+                        <li>Successfully completed mandatory teaching practice as part of the D.El.Ed program.</li>
+
+                        <li>Designed and delivered structured lesson plans and interactive classroom activities for
+                            primary-level students.</li>
+
+                        <li>Assisted students in academic learning, behavioural guidance, and discipline management.
+                        </li>
+
+                        <li>Observed and implemented effective pedagogical strategies under the supervision of senior
+                            educators.</li>
+
+                        <li>Gained practical classroom experience in student engagement, lesson planning, and classroom
+                            management.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Education Section -->
+    <section id="education" class="education section">
+        <div class="container">
+            <h2 class="section-title">Educational Qualifications</h2>
+
+            <div class="education-card">
+                <h3 class="education-title">D.El.Ed (Diploma in Elementary Education)</h3>
+                <p class="education-institution">Shah Satnam College of Education</p>
+                <div class="contact-text">CDLU University</div>
+            </div>
+            <br>
+
+            <div class="education-card">
+                <h3 class="education-title">B.Sc (Non-Medical)</h3>
+                <p class="education-institution">National College, Sirsa</p>
+                <div class="contact-text">CDLU University</div>
+            </div>
+            <br>
+
+            <div class="education-card">
+                <h3 class="education-title">Class XII (Senior Secondary)</h3>
+                <p class="education-institution">Sudesh Vatika Convent School</p>
+                <div class="contact-text">CBSE Board</div>
+            </div>
+            <br>
+
+            <div class="education-card">
+                <h3 class="education-title">Class X (Secondary)</h3>
+                <p class="education-institution">The Oxford International School</p>
+                <div class="contact-text">CBSE Board</div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="education section">
+        <div class="container">
+            <h2 class="section-title">Certifications</h2>
+
+            <div class="education-card">
+                <h3 class="education-title">CTET 2026</h3>
+                <p class="education-institution">Central Teacher Eligibility Test</p>
+                <div class="contact-text">Qualified</div>
+            </div>
+            <br>
+
+            <div class="education-card">
+                <h3 class="education-title">PTET 2026</h3>
+                <p class="education-institution">Pre-Teacher Education Test</p>
+                <div class="contact-text">Qualified</div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">Mandi Dabwali ,Haryana</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-text">+91 9034390619</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">vinaykanwaria@gmail.com</div>
+                    </div>
+                    <!-- <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </div>
+                        <div class="contact-text">
+                            <a href="https://www.linkedin.com/in/vinay-kanwaria-759b54242/" target="_blank">LinkedIn
+                                Profile</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <div class="contact-text">
+                            <a href="https://github.com/mohitkanwaria" target="_blank">GitHub
+                            </a>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="contact-form">
+                    <form action="https://formsubmit.co/vinaykanwaria@gmail.com" method="POST">
+
+                        <!-- Disable captcha -->
+                        <input type="hidden" name="_captcha" value="false">
+
+                        <!-- Redirect after successful submit -->
+                        <input type="hidden" name="_next" value="https://vinaykanwaria.vercel.app/">
+                        <div class="form-group">
+                            <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" name="subject" class="form-control" placeholder="Subject">
+                        </div>
+
+                        <div class="form-group">
+                            <textarea name="message" class="form-control" placeholder="Your Message"
+                                required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Vinay Kanwaria</p>
+                <p>All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+
+    <!-- Custom JS -->
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+
+                // Close mobile menu if open
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+
+        // Mobile Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Add active class to nav links on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+
+                if (window.pageYOffset >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Form Submission
+        const contactForm = document.getElementById('contactForm');
+
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Get form values
+            const formData = new FormData(this);
+            const formValues = {};
+
+            for (let [key, value] of formData.entries()) {
+                formValues[key] = value;
+            }
+
+            // Here you would typically send the form data to a server
+            // For now, we'll just show a success message
+            alert('Thank you for your message! I will get back to you soon.');
+            contactForm.reset();
+        });
+
+        // Animation on scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.experience-card, .project-card, .skill-category, .education-card');
+
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+
+                if (elementPosition < screenPosition) {
+                    element.classList.add('fade-in');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+
+</html>
